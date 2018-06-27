@@ -7,18 +7,20 @@ import {
 } from 'react-native';
 import Snackbar from 'react-native-snackbar';
 
-export class Snackbar extends React.Component {
+export class SnackbarScreen extends React.Component {
     static navigationOptions = {
         headerTitle: 'Snackbar',
+        headerRight: (
+            <Button onPress={() => alert('This is a button!')} title="</>"/>
+        ),
     };
-
 
 
     render() {
         return (
             <View>
 
-             <Text>ss</Text>
+                <Text>Snackbar</Text>
             </View>
         );
     }
