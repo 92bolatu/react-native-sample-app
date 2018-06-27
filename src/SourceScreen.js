@@ -1,44 +1,28 @@
 import React from 'react';
-import {View, Text,Button} from 'react-native';
+import {View, Text, Button, Alert} from 'react-native';
 import SyntaxHighlighter from 'react-native-syntax-highlighter';
 import {atomDark} from 'react-syntax-highlighter/styles/prism';
-//registerLanguage('jsx', jsx);
-
 
 export default class SourceScreen extends React.Component {
 
-    static navigationOptions = ({ navigation }) => {
+    static navigationOptions = ({navigation}) => {
         return {
-            title: navigation.getParam('link', 'A Nested Details Screen'),
-            headerTitle: 'Composition.js',
-            headerRight: (
-                <Button
-                    onPress={() => alert('This is a button!')}
-                    title="Info"
-                />
-            ),
+            headerTitle: 'Source',
+            headerRight: (<Button onPress={() => Alert.alert('Github', navigation.getParam('link'))} title="<#>"/>),
         };
     };
 
-
     constructor(props) {
         super(props);
-        this.state = {
-            code: '',
-            link: '',
-            stat: 0
-
-        };
+        this.state = {code: ''};
 
     }
 
 
     componentDidMount() {
-        var file = 'https://raw.githubusercontent.com/92bolatu/react-native-sample-app/master/src/001-Composition.js';
-        fetch(file)
+        fetch(this.props.navigation.getParam('link'))
             .then((response) => response.text())
             .then((text) => {
-                console.log(text);
                 this.setState({code: text});
             })
             .catch((error) => {
@@ -74,6 +58,5 @@ const SourceStyle = {
     custom: {
         margin: 0,
         borderRadius: 0,
-
     }
-}
+};
