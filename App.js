@@ -1,20 +1,19 @@
 import React, {Component} from 'react';
 import {createStackNavigator} from 'react-navigation';
-import {Index} from './src/000-Index';
-import {Composition} from "./src/001-Composition";
+import IndexScreen from './src/IndexScreen';
 import SourceScreen from "./src/SourceScreen";
-import {SnackbarScreen} from "./src/sample/SnackbarScreen";
-
+import Indexes from './src/Indexes';
 
 const StackRoute = {
-    Index: Index,
+    Index: IndexScreen,
     Source: SourceScreen,
-    Snackbar:SnackbarScreen,
-    Composition: Composition
 };
+
+Object.keys(Indexes).forEach(k => StackRoute[k] = Indexes[k]);
+
 const StackConfig = {
     mode: 'card',
-    initialRouteName: 'Snackbar',
+    initialRouteName: 'Index',
 };
 
 export default createStackNavigator(StackRoute, StackConfig);

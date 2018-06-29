@@ -7,9 +7,9 @@ import {
     ImageBackground
 } from 'react-native';
 
-import styles from './Styles';
+import styles from '../Styles';
 
-export class Composition extends React.Component {
+export class CompositionScreen extends React.Component {
     static navigationOptions = {
         headerTitle: 'Composition',
     };
